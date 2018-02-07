@@ -18,7 +18,9 @@ public class BodyPart {
     }
 
     //Moving
+    public void move(){
 
+    }
 
     //Increase Diameter and Speed
     public void plus1(){
