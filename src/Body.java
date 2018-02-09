@@ -1,16 +1,18 @@
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Body {
 
     List<BodyPart> body;
+    Board board;
 
-    public Body(){
+    public Body(Board board){
         body = new ArrayList<BodyPart>();
+        this.board = board;
         for(int i = 0; i < 5; i++){
-            body.add(new BodyPart());
+            body.add(new BodyPart(5, 5, board));
         }
-
     }
 
     public void addBody(BodyPart bodyPart){
@@ -27,6 +29,12 @@ public class Body {
     public void move(){
         for(int i = 0; i < body.size(); i++){
             body.get(i).move();
+        }
+    }
+
+    public void paint(Graphics g){
+        for(int i = 0; i < body.size(); i++){
+            body.get(i).paint(g);
         }
     }
 
