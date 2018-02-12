@@ -2,13 +2,13 @@ import java.awt.*;
 
 public class BodyPart {
 
-    int diameter = 10;
+    int diameter = 30;
     int x, y;
     int speed = 10;
     Board board;
 
     //Adding More
-    public BodyPart(int x, int y, Boar){
+    public BodyPart(int x, int y, Board board){
         this.board = board;
         this.x = x;
         this.y = y;
@@ -16,19 +16,35 @@ public class BodyPart {
 
 
     //Initial Body Part
-    public BodyPart(int x, int y, Board board){
+    public BodyPart(Board board){
         this.board = board;
         this.x = board.getWidth();
         this.y = board.getHeight();
     }
 
     //Moving
-    public void move(){
-
+    public void move(String direction){
+        if(direction.equals("up")){
+            y -= speed;
+        }
+        else if(direction.equals("down")){
+            y += speed;
+        }
+        else if(direction.equals("left")){
+            x -= speed;
+        }
+        else{
+            x += speed;
+        }
     }
 
     public void paint(Graphics g){
         g.fillOval(x, y, diameter, diameter);
+    }
+
+    public void setPosition(int x, int y){
+        this.x = x - diameter/2;
+        this.y = y - diameter/2;
     }
 
     //Increase Diameter and Speed

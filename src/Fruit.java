@@ -4,7 +4,7 @@ public class Fruit {
     int x, y, diameter = 25, fruitType, fruitValue;
 
     public Fruit(Board board) {
-        fruitType = (int) Math.random() * 7;
+        fruitType = (int) (Math.random() * 7);
         fruitValue = fruitType * 50;
         x = (int) Math.random() * board.getWidth() - diameter;
         y = (int) Math.random() * board.getHeight() - diameter;
@@ -12,7 +12,6 @@ public class Fruit {
 
 
     public void paint(Graphics g){
-        g.fillOval(x, y, diameter, diameter);
         switch(fruitType){
             case 0:
                 g.setColor(Color.GRAY);
@@ -38,5 +37,11 @@ public class Fruit {
             default:
                 System.out.print("Figure out what happened");
         }
+        g.fillOval(x, y, diameter, diameter);
+    }
+
+    public void setPosition(int x, int y){
+        this.x = x - diameter/2;
+        this.y = y - diameter/2;
     }
 }

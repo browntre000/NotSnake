@@ -5,14 +5,17 @@ public class Obstacle {
 
     public Obstacle(Board board) {
 
-        xSize = board.getWidth() / 2;
-        ySize = board.getHeight() / 2;
-        x = (int) Math.random() * board.getWidth() - xSize;
-        y = (int) Math.random() * board.getHeight() - ySize;
+        xSize = (int) (Math.random() * 100) + 200;
+        ySize = (int) (Math.random() * 100) + 200;
+        x = (int) (Math.random() * 1000) - 500;
+        System.out.println(x);
+        y = (int) (Math.random() * 1000) - 500;
+        System.out.println(y);
     }
 
 
     public void paint(Graphics g){
-        g.fillRect(x, y, xSize, ySize);
+        g.drawRect(this.x, this.y, xSize, ySize);
     }
+
 }

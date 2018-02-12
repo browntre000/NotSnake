@@ -19,7 +19,7 @@ public class Body {
         for(int i = 0; i < 5; i++){
             int lastX = body.get(body.size() - 1).getX();
             int lastY = body.get(body.size() - 1).getY();
-            body.add(new BodyPart(lastX, lastY));
+            body.add(new BodyPart(lastX, lastY, board));
         }
         for(int i = 0; i < body.size(); i++){
             body.get(i).plus1();
@@ -27,14 +27,21 @@ public class Body {
     }
 
     public void move(){
+        if()
         for(int i = 0; i < body.size(); i++){
-            body.get(i).move();
+            body.get(i).move("up");
         }
     }
 
     public void paint(Graphics g){
         for(int i = 0; i < body.size(); i++){
             body.get(i).paint(g);
+        }
+    }
+
+    public void setPosition(int x, int y){
+        for(BodyPart bodyPart : body){
+            bodyPart.setPosition(x, y);
         }
     }
 

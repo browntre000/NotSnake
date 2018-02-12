@@ -12,16 +12,19 @@ public class Board extends JPanel implements ActionListener{
     Timer timer;
 
     public Board(Game game){
-        setBackground(Color.blue);
+        setBackground(Color.black);
         setPreferredSize(new Dimension(1000, 800));
         body = new Body(this);
         obstacle = new Obstacle(this);
         fruit = new Fruit(this);
-        ball = new Ball();
+        ball = new Ball(this);
 
     }
 
     public void startGame(){
+        body.setPosition(50, 50);
+        fruit.setPosition(100, 50);
+        ball.setPosition(200, 200);
         timer = new Timer(1000/60, this);
         timer.start();
     }
@@ -34,11 +37,12 @@ public class Board extends JPanel implements ActionListener{
     public void paintComponent(Graphics g){
 
         super.paintComponent(g);
-        g.setColor(Color.ORANGE);
+        g.setColor(Color.WHITE);
 
         body.paint(g);
         obstacle.paint(g);
         fruit.paint(g);
+        ball.paint(g);
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
