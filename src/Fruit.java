@@ -1,14 +1,16 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Fruit {
     int x, y, diameter = 25, fruitType, fruitValue;
     Board board;
+    Random random = new Random();
 
     public Fruit(Board board) {
-        fruitType = (int) (Math.random() * 7);
+        fruitType = random.nextInt(7);
         fruitValue = fruitType * 50;
-        x = (int) Math.random() * board.getWidth() - diameter;
-        y = (int) Math.random() * board.getHeight() - diameter;
+        x = random.nextInt(board.getWidth()) - diameter;
+        y = random.nextInt(board.getHeight()) - diameter;
         this.board = board;
     }
 
@@ -49,12 +51,12 @@ public class Fruit {
 
     public void checkCollisionWithBody(Body body){
         if(Math.abs(body.getPart(0).getX() - x) <= diameter){
-            x = (int) Math.random() * board.getWidth() - diameter;
-            y = (int) Math.random() * board.getHeight() - diameter;
+            x = random.nextInt(board.getWidth()) - diameter;
+            y = random.nextInt(board.getHeight()) - diameter;
         }
         if(Math.abs(body.getPart(0).getY() - y) <= diameter){
-            x = (int) Math.random() * board.getWidth() - diameter;
-            y = (int) Math.random() * board.getHeight() - diameter;
+            x = random.nextInt(board.getWidth()) - diameter;
+            y = random.nextInt(board.getHeight()) - diameter;
         }
     }
 

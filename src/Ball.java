@@ -1,11 +1,14 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Ball {
-    int x, y, diameter = (int)(Math.random() * 50);
+    int x, y, diameter;
+    Random random = new Random();
 
     public Ball(Board board) {
-        x = (int) Math.random() * board.getWidth() - diameter;
-        y = (int) Math.random() * board.getHeight() - diameter;
+        diameter = random.nextInt(75);
+        x = random.nextInt(board.getWidth()) - diameter;
+        y = random.nextInt(board.getHeight()) - diameter;
     }
 
 
