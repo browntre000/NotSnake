@@ -1,21 +1,22 @@
 import java.awt.*;
+import java.util.Random;
 
 public class Obstacle {
     int x, y, xSize, ySize;
+    Random random = new Random();
+    Board board;
+
 
     public Obstacle(Board board) {
-
-        xSize = (int) (Math.random() * 100) + 200;
-        ySize = (int) (Math.random() * 100) + 200;
-        x = (int) (Math.random() * 1000) - 500;
-        System.out.println(x);
-        y = (int) (Math.random() * 1000) - 500;
-        System.out.println(y);
+        xSize = random.nextInt(board.getWidth()) / 2;
+        ySize = random.nextInt(board.getHeight()) / 2;
+        x = random.nextInt(board.getWidth()) / 2;
+        y = random.nextInt(board.getHeight()) / 2;
     }
 
 
     public void paint(Graphics g){
-        g.drawRect(this.x, this.y, xSize, ySize);
+        g.fillRect(this.x, this.y, xSize, ySize);
     }
 
 }

@@ -1,7 +1,7 @@
 import java.awt.*;
 
 public class Ball {
-    int x, y, diameter = 25;
+    int x, y, diameter = (int)(Math.random() * 50);
 
     public Ball(Board board) {
         x = (int) Math.random() * board.getWidth() - diameter;
@@ -10,6 +10,7 @@ public class Ball {
 
 
     public void paint(Graphics g){
+        g.setColor(Color.WHITE);
         g.fillOval(x, y, diameter, diameter);
     }
 

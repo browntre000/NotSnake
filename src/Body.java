@@ -27,10 +27,18 @@ public class Body {
     }
 
     public void move(){
-        if()
-        for(int i = 0; i < body.size(); i++){
-            body.get(i).move("up");
-        }
+        if(Game.isUpPressed())
+            for(int i = 0; i < body.size(); i++)
+                body.get(i).move("up");
+        else if(Game.isDownPressed())
+            for(int i = 0; i < body.size(); i++)
+                body.get(i).move("down");
+        else if(Game.isLeftPressed())
+            for(int i = 0; i < body.size(); i++)
+                body.get(i).move("left");
+        else
+            for(int i = 0; i < body.size(); i++)
+                body.get(i).move("right");
     }
 
     public void paint(Graphics g){
@@ -45,5 +53,7 @@ public class Body {
         }
     }
 
-
+    public BodyPart getPart(int i){
+        return body.get(i);
+    }
 }

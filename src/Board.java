@@ -10,6 +10,7 @@ public class Board extends JPanel implements ActionListener{
     Fruit fruit;
     Ball ball;
     Timer timer;
+    int score = 0, width = 1000, height = 800;
 
     public Board(Game game){
         setBackground(Color.black);
@@ -30,7 +31,8 @@ public class Board extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e){
-
+        body.move();
+        repaint();
     }
 
     @Override
@@ -51,4 +53,13 @@ public class Board extends JPanel implements ActionListener{
         g2d.drawString(s, start + XPos, YPos);
     }
 
+    @Override
+    public int getHeight(){
+        return this.height;
+    }
+
+    @Override
+    public int getWidth(){
+        return this.width;
+    }
 }

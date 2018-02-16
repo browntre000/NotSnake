@@ -2,12 +2,14 @@ import java.awt.*;
 
 public class Fruit {
     int x, y, diameter = 25, fruitType, fruitValue;
+    Board board;
 
     public Fruit(Board board) {
         fruitType = (int) (Math.random() * 7);
         fruitValue = fruitType * 50;
         x = (int) Math.random() * board.getWidth() - diameter;
         y = (int) Math.random() * board.getHeight() - diameter;
+        this.board = board;
     }
 
 
@@ -43,5 +45,20 @@ public class Fruit {
     public void setPosition(int x, int y){
         this.x = x - diameter/2;
         this.y = y - diameter/2;
+    }
+
+    public void checkCollisionWithBody(Body body){
+        if(Math.abs(body.getPart(0).getX() - x) <= diameter){
+            x = (int) Math.random() * board.getWidth() - diameter;
+            y = (int) Math.random() * board.getHeight() - diameter;
+        }
+        if(Math.abs(body.getPart(0).getY() - y) <= diameter){
+            x = (int) Math.random() * board.getWidth() - diameter;
+            y = (int) Math.random() * board.getHeight() - diameter;
+        }
+    }
+
+    public int getFruitValue(){
+        return this.fruitValue;
     }
 }

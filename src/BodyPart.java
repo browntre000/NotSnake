@@ -36,10 +36,19 @@ public class BodyPart {
         else{
             x += speed;
         }
+
+        if(x >= board.getWidth() && Game.isRightPressed())
+            x = 0;
+        if(x <= 0 && Game.isLeftPressed())
+            x = board.getWidth();
+        if(y >= board.getHeight() && Game.isDownPressed())
+            y = 0;
+        if(y <= 0 && Game.isUpPressed())
+            y = board.getHeight();
     }
 
     public void paint(Graphics g){
-        g.fillOval(x, y, diameter, diameter);
+        g.fillRect(x, y, diameter, diameter);
     }
 
     public void setPosition(int x, int y){

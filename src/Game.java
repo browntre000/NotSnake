@@ -25,7 +25,7 @@ public class Game extends JFrame implements KeyListener {
         board.startGame();
     }
 
-    private static boolean upPressed, downPressed, leftPressed, rightPressed;
+    private static boolean upPressed = false, downPressed = false, leftPressed = false, rightPressed = true;
 
     @Override
     public void keyTyped(KeyEvent e) {
