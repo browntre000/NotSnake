@@ -2,7 +2,7 @@ import java.awt.*;
 
 public class BodyPart {
 
-    int diameter = 30;
+    int xSize = 30;
     int x, y;
     int speed = 10;
     Board board;
@@ -39,26 +39,26 @@ public class BodyPart {
 
         if(x >= board.getWidth() && Game.isRightPressed())
             x = 0;
-        if(x <= 0 && Game.isLeftPressed())
+        if(x <= -xSize && Game.isLeftPressed())
             x = board.getWidth();
         if(y >= board.getHeight() && Game.isDownPressed())
             y = 0;
-        if(y <= 0 && Game.isUpPressed())
+        if(y <= -xSize && Game.isUpPressed())
             y = board.getHeight();
     }
 
     public void paint(Graphics g){
-        g.fillRect(x, y, diameter, diameter);
+        g.fillRect(x, y, xSize, xSize);
     }
 
     public void setPosition(int x, int y){
-        this.x = x - diameter/2;
-        this.y = y - diameter/2;
+        this.x = x - xSize/2;
+        this.y = y - xSize/2;
     }
 
     //Increase Diameter and Speed
     public void plus1(){
-        diameter += 5;
+        xSize += 5;
         speed += 3;
     }
 
@@ -73,8 +73,8 @@ public class BodyPart {
         return x;
     }
 
-    public int getDiameter() {
-        return diameter;
+    public int getXSize() {
+        return xSize;
     }
 
     public int getSpeed() {

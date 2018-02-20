@@ -15,7 +15,7 @@ public class Body {
         }
     }
 
-    public void addBody(BodyPart bodyPart){
+    public void addBody(){
         for(int i = 0; i < 5; i++){
             int lastX = body.get(body.size() - 1).getX();
             int lastY = body.get(body.size() - 1).getY();
@@ -55,5 +55,14 @@ public class Body {
 
     public BodyPart getPart(int i){
         return body.get(i);
+    }
+
+    public void collideWithBall(Fruit fruit){
+        if ((Math.abs(body.get(0).getX() - fruit.getX()) <= fruit.getDiameter()) && (Math.abs(body.get(0).getY() - fruit.getY()) <= fruit.getDiameter())) {
+            int lastX = body.get(body.size() - 1).getX();
+            int lastY = body.get(body.size() - 1).getY();
+            body.add(new BodyPart(lastX, lastY, board));
+            addBody();
+        }
     }
 }

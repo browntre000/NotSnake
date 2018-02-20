@@ -50,11 +50,7 @@ public class Fruit {
     }
 
     public void checkCollisionWithBody(Body body){
-        if(Math.abs(body.getPart(0).getX() - x) <= diameter){
-            x = random.nextInt(board.getWidth()) - diameter;
-            y = random.nextInt(board.getHeight()) - diameter;
-        }
-        if(Math.abs(body.getPart(0).getY() - y) <= diameter){
+        if((Math.abs(body.getPart(0).getX() - x) <= diameter) && (Math.abs(body.getPart(0).getY() - y) <= diameter)){
             x = random.nextInt(board.getWidth()) - diameter;
             y = random.nextInt(board.getHeight()) - diameter;
         }
@@ -62,5 +58,16 @@ public class Fruit {
 
     public int getFruitValue(){
         return this.fruitValue;
+    }
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public int getDiameter() {
+        return diameter;
     }
 }

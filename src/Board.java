@@ -25,13 +25,15 @@ public class Board extends JPanel implements ActionListener{
     public void startGame(){
         body.setPosition(50, 50);
         fruit.setPosition(100, 50);
-        ball.setPosition(200, 200);
         timer = new Timer(1000/60, this);
         timer.start();
     }
 
     public void actionPerformed(ActionEvent e){
         body.move();
+        body.collideWithBall(fruit);
+        fruit.checkCollisionWithBody(body);
+        ball.move();
         repaint();
     }
 
