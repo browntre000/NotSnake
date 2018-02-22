@@ -57,4 +57,8 @@ public class Board extends JPanel implements ActionListener{
     public int getWidth(){
         return this.width;
     }
+    
+    public void increaseScore(int score){
+        this.score += score;
+    }
 }
