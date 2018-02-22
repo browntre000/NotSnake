@@ -57,12 +57,20 @@ public class Body {
         return body.get(i);
     }
 
-    public void collideWithBall(Fruit fruit){
-        if ((Math.abs(body.get(0).getX() - fruit.getX()) <= fruit.getDiameter()) && (Math.abs(body.get(0).getY() - fruit.getY()) <= fruit.getDiameter())) {
-            int lastX = body.get(body.size() - 1).getX();
-            int lastY = body.get(body.size() - 1).getY();
+    public void collideWithFruit(Fruit fruit){
+        boolean isTouching = false;
+        int lastX = body.get(body.size() - 1).getX(), lastY = body.get(body.size() - 1).getY();
+        for(int i = 0; i < body.size() - 1; i++){
+            isTouching = body.get(i).checkCollisionWithFruit(fruit, lastX, lastY);
+            i = body.size();
+        }
+        if(isTouching) {
             body.add(new BodyPart(lastX, lastY, board));
             addBody();
         }
+    }
+
+    public int getSize(){
+        return body.size();
     }
 }

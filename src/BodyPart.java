@@ -51,6 +51,15 @@ public class BodyPart {
         g.fillRect(x, y, xSize, xSize);
     }
 
+    public boolean checkCollisionWithFruit(Fruit fruit, int x, int y){
+        if ((Math.abs(x - fruit.getX()) <= fruit.getDiameter()) && (Math.abs(y - fruit.getY()) <= fruit.getDiameter())) {
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
     public void setPosition(int x, int y){
         this.x = x - xSize/2;
         this.y = y - xSize/2;
@@ -59,7 +68,7 @@ public class BodyPart {
     //Increase Diameter and Speed
     public void plus1(){
         xSize += 5;
-        speed += 3;
+        speed += 5;
     }
 
 

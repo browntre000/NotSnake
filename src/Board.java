@@ -6,9 +6,7 @@ import java.awt.event.ActionListener;
 public class Board extends JPanel implements ActionListener{
 
     Body body;
-    Obstacle obstacle;
     Fruit fruit;
-    Ball ball;
     Timer timer;
     int score = 0, width = 1000, height = 800;
 
@@ -16,9 +14,7 @@ public class Board extends JPanel implements ActionListener{
         setBackground(Color.black);
         setPreferredSize(new Dimension(1000, 800));
         body = new Body(this);
-        obstacle = new Obstacle(this);
         fruit = new Fruit(this);
-        ball = new Ball(this);
 
     }
 
@@ -31,9 +27,8 @@ public class Board extends JPanel implements ActionListener{
 
     public void actionPerformed(ActionEvent e){
         body.move();
-        body.collideWithBall(fruit);
+        body.collideWithFruit(fruit);
         fruit.checkCollisionWithBody(body);
-        ball.move();
         repaint();
     }
 
@@ -44,9 +39,7 @@ public class Board extends JPanel implements ActionListener{
         g.setColor(Color.WHITE);
 
         body.paint(g);
-        obstacle.paint(g);
         fruit.paint(g);
-        ball.paint(g);
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
