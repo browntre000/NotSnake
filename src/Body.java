@@ -32,18 +32,20 @@ public class Body {
     public void move(){
 
         while(board.getScore() < 3000){
-            for(int i = 0; i < body.size(); i++){
-                if(Game.isUpPressed()){
-                    body.get(i).move("up");
+            for(int i = 0; i < body.size(); i++) {
+                if (body.size() == 1){
+                    if (Game.currentDirection().equals("up")) {
+                        body.get(i).move("up");
+                    } else if (Game.isDownPressed()) {
+                        body.get(i).move("down");
+                    } else if (Game.isRightPressed()) {
+                        body.get(i).move("right");
+                    } else if (Game.isLeftPressed()) {
+                        body.get(i).move("left");
+                    }
                 }
-                else if(Game.isDownPressed()){
-                    body.get(i).move("down");
-                }
-                else if(Game.isRightPressed()){
-                    body.get(i).move("right");
-                }
-                else if(Game.isLeftPressed()){
-                    body.get(i).move("left");
+                else {
+                    //Do things
                 }
             }
         }

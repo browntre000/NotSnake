@@ -25,7 +25,7 @@ public class Game extends JFrame implements KeyListener {
         board.startGame();
     }
 
-    private static boolean upPressed = false, downPressed = false, leftPressed = false, rightPressed = true;
+    static int direction = 2, lastDirection;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -33,29 +33,21 @@ public class Game extends JFrame implements KeyListener {
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        if(e.getKeyCode() == KeyEvent.VK_UP){
-            upPressed = true;
-            downPressed = false;
-            leftPressed = false;
-            rightPressed = false;
+        if((e.getKeyCode() == KeyEvent.VK_UP) && !(direction != 3)){
+            lastDirection = direction;
+            direction = 1;
         }
-        if(e.getKeyCode() == KeyEvent.VK_DOWN){
-            downPressed = true;
-            upPressed = false;
-            leftPressed = false;
-            rightPressed = false;
+        if((e.getKeyCode() == KeyEvent.VK_DOWN) && !(direction != 1)){
+            lastDirection = direction;
+            direction = 3;
         }
-        if(e.getKeyCode() == KeyEvent.VK_LEFT){
-            leftPressed = true;
-            rightPressed = false;
-            upPressed = false;
-            downPressed = false;
+        if((e.getKeyCode() == KeyEvent.VK_LEFT) && !(direction != 2)){
+            lastDirection = direction;
+            direction = 4;
         }
-        if(e.getKeyCode() == KeyEvent.VK_RIGHT){
-            rightPressed = true;
-            leftPressed = false;
-            upPressed = false;
-            downPressed = false;
+        if((e.getKeyCode() == KeyEvent.VK_RIGHT) && !(direction != 4)){
+            lastDirection = direction;
+            direction = 2;
         }
     }
     @Override
@@ -63,30 +55,41 @@ public class Game extends JFrame implements KeyListener {
 
     }
 
-    public static boolean isUpPressed(){
-        return upPressed;
+    public int getDirection() {
+        return direction;
     }
 
-    public static boolean isDownPressed(){
-        return downPressed;
+    public int getLastDirection(){
+        return lastDirection;
     }
 
-    public static boolean isLeftPressed() {
-        return leftPressed;
+    public static String currentDirection(){
+        switch(direction) {
+            case 1:
+                return "up";
+            case 2:
+                return "down";
+            case 3:
+                return "left";
+            case 4:
+                return "right";
+            default:
+                return "";
+        }
     }
 
-    public static boolean isRightPressed() {
-        return rightPressed;
-    }
-
-    public static String whichPressed(){
-        if(upPressed)
-            return "up";
-        if(downPressed)
-            return "down";
-        if(leftPressed)
-            return "left";
-        if(rightPressed)
-            return "right";
+    public static String lastDirection(){
+        switch(lastDirection) {
+            case 1:
+                return "up";
+            case 2:
+                return "down";
+            case 3:
+                return "left";
+            case 4:
+                return "right";
+            default:
+                return "";
+        }
     }
 }
