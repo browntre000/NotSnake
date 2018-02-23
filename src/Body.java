@@ -65,6 +65,7 @@ public class Body {
             i = body.size();
         }
         if(isTouching) {
+            board.increaseScore(fruit.getFruitValue);
             body.add(new BodyPart(lastX, lastY, board));
             addBody();
         }
