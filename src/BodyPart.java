@@ -48,7 +48,7 @@ public class BodyPart {
     }
 
     public void paint(Graphics g){
-        g.fillRect(x, y, xSize, xSize);
+        g.fillOval(x, y, xSize, xSize);
     }
 
     public boolean checkCollisionWithFruit(Fruit fruit, int x, int y){
@@ -68,7 +68,7 @@ public class BodyPart {
     //Increase Diameter and Speed
     public void plus1(){
         xSize += 5;
-        speed += 5;
+        speed += 1;
     }
 
 

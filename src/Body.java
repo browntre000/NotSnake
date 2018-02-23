@@ -6,6 +6,8 @@ public class Body {
 
     List<BodyPart> body;
     Board board;
+    int bodyLength;
+    int up, down, left, right;
 
     public Body(Board board){
         body = new ArrayList<BodyPart>();
@@ -13,6 +15,7 @@ public class Body {
         for(int i = 0; i < 5; i++){
             body.add(new BodyPart(5, 5, board));
         }
+        bodyLength = 5;
     }
 
     public void addBody(){
@@ -27,18 +30,23 @@ public class Body {
     }
 
     public void move(){
-        if(Game.isUpPressed())
-            for(int i = 0; i < body.size(); i++)
-                body.get(i).move("up");
-        else if(Game.isDownPressed())
-            for(int i = 0; i < body.size(); i++)
-                body.get(i).move("down");
-        else if(Game.isLeftPressed())
-            for(int i = 0; i < body.size(); i++)
-                body.get(i).move("left");
-        else
-            for(int i = 0; i < body.size(); i++)
-                body.get(i).move("right");
+
+        while(board.getScore() < 3000){
+            for(int i = 0; i < body.size(); i++){
+                if(Game.isUpPressed()){
+                    body.get(i).move("up");
+                }
+                else if(Game.isDownPressed()){
+                    body.get(i).move("down");
+                }
+                else if(Game.isRightPressed()){
+                    body.get(i).move("right");
+                }
+                else if(Game.isLeftPressed()){
+                    body.get(i).move("left");
+                }
+            }
+        }
     }
 
     public void paint(Graphics g){
@@ -65,7 +73,7 @@ public class Body {
             i = body.size();
         }
         if(isTouching) {
-            board.increaseScore(fruit.getFruitValue);
+            board.increaseScore(fruit.getFruitValue());
             body.add(new BodyPart(lastX, lastY, board));
             addBody();
         }

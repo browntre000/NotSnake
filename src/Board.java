@@ -41,8 +41,9 @@ public class Board extends JPanel implements ActionListener{
 
         body.paint(g);
         fruit.paint(g);
-        g.setColor(Color.PINK):
-        printSimpleString(Integer.toString(score), getWidth()/2, getWidth()/2, getHeight()/2, g);
+        g.setColor(Color.PINK);
+        g.setFont(new Font("Ariel", Font.BOLD, 36));
+        printSimpleString(Integer.toString(score), getWidth(), getWidth()/4, getHeight()/4, g);
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
@@ -63,5 +64,9 @@ public class Board extends JPanel implements ActionListener{
     
     public void increaseScore(int score){
         this.score += score;
+    }
+
+    public int getScore() {
+        return score;
     }
 }

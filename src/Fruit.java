@@ -7,7 +7,7 @@ public class Fruit {
     Random random = new Random();
 
     public Fruit(Board board) {
-        fruitType = random.nextInt(7);
+        fruitType = random.nextInt(7) + 2;
         fruitValue = fruitType * 50;
         x = random.nextInt(board.getWidth()) - diameter;
         y = random.nextInt(board.getHeight()) - diameter;
@@ -17,25 +17,25 @@ public class Fruit {
 
     public void paint(Graphics g){
         switch(fruitType){
-            case 0:
+            case 2:
                 g.setColor(Color.GRAY);
                 break;
-            case 1:
+            case 3:
                 g.setColor(Color.BLUE);
                 break;
-            case 2:
+            case 4:
                 g.setColor(Color.GREEN);
                 break;
-            case 3:
+            case 5:
                 g.setColor(Color.RED);
                 break;
-            case 4:
+            case 6:
                 g.setColor(Color.CYAN);
                 break;
-            case 5:
+            case 7:
                 g.setColor(Color.ORANGE);
                 break;
-            case 6:
+            case 8:
                 g.setColor(Color.YELLOW);
                 break;
             default:
@@ -54,7 +54,7 @@ public class Fruit {
             if ((Math.abs(body.getPart(i).getX() - x) <= diameter) && (Math.abs(body.getPart(i).getY() - y) <= diameter)) {
                 x = random.nextInt(board.getWidth());
                 y = random.nextInt(board.getHeight());
-                fruitType = random.nextInt(7);
+                fruitType = random.nextInt(7) + 2;
             }
         }
     }

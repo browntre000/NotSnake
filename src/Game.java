@@ -78,4 +78,15 @@ public class Game extends JFrame implements KeyListener {
     public static boolean isRightPressed() {
         return rightPressed;
     }
+
+    public static String whichPressed(){
+        if(upPressed)
+            return "up";
+        if(downPressed)
+            return "down";
+        if(leftPressed)
+            return "left";
+        if(rightPressed)
+            return "right";
+    }
 }
