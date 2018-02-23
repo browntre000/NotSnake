@@ -42,7 +42,7 @@ public class Board extends JPanel implements ActionListener{
         body.paint(g);
         fruit.paint(g);
         g.setColor(Color.PINK):
-        printSimpleString(Integer.toString(score), getWidth()/2, 0, DECORSIZE*2, g);
+        printSimpleString(Integer.toString(score), getWidth()/2, getWidth()/2, getHeight()/2, g);
     }
 
     private void printSimpleString(String s, int width, int XPos, int YPos, Graphics g2d){
