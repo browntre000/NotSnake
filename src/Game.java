@@ -23,9 +23,11 @@ public class Game extends JFrame implements KeyListener {
         pack();
         setLocationRelativeTo(null);
         board.startGame();
+
+        debugThings();
     }
 
-    static int direction = 2, lastDirection;
+    static int direction, lastDirection;
 
     @Override
     public void keyTyped(KeyEvent e) {
@@ -33,19 +35,19 @@ public class Game extends JFrame implements KeyListener {
     }
     @Override
     public void keyPressed(KeyEvent e) {
-        if((e.getKeyCode() == KeyEvent.VK_UP) && !(direction != 3)){
+        if((e.getKeyCode() == KeyEvent.VK_UP)){
             lastDirection = direction;
             direction = 1;
         }
-        if((e.getKeyCode() == KeyEvent.VK_DOWN) && !(direction != 1)){
+        if((e.getKeyCode() == KeyEvent.VK_DOWN)){
             lastDirection = direction;
             direction = 3;
         }
-        if((e.getKeyCode() == KeyEvent.VK_LEFT) && !(direction != 2)){
+        if((e.getKeyCode() == KeyEvent.VK_LEFT)){
             lastDirection = direction;
             direction = 4;
         }
-        if((e.getKeyCode() == KeyEvent.VK_RIGHT) && !(direction != 4)){
+        if((e.getKeyCode() == KeyEvent.VK_RIGHT)){
             lastDirection = direction;
             direction = 2;
         }
@@ -68,11 +70,11 @@ public class Game extends JFrame implements KeyListener {
             case 1:
                 return "up";
             case 2:
-                return "down";
-            case 3:
-                return "left";
-            case 4:
                 return "right";
+            case 3:
+                return "down";
+            case 4:
+                return "left";
             default:
                 return "";
         }
@@ -83,13 +85,34 @@ public class Game extends JFrame implements KeyListener {
             case 1:
                 return "up";
             case 2:
-                return "down";
-            case 3:
-                return "left";
-            case 4:
                 return "right";
+            case 3:
+                return "down";
+            case 4:
+                return "left";
             default:
                 return "";
+        }
+    }
+
+    public void debugThings(){
+        int i = direction;
+        int j = 0;
+
+        while((i == direction) && (j == lastDirection)){
+            if(i != direction){
+                System.out.println(direction);
+            }
+            else{
+                System.out.print("");
+            }
+
+            if(i != lastDirection){
+                System.out.println(lastDirection);
+            }
+            else{
+                System.out.print("");
+            }
         }
     }
 }

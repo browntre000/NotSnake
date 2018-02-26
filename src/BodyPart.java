@@ -37,13 +37,41 @@ public class BodyPart {
             x += speed;
         }
 
-        if(x >= board.getWidth() && Game.isRightPressed())
+        if(x >= board.getWidth())
             x = 0;
-        if(x <= -xSize && Game.isLeftPressed())
+        if(x <= -xSize)
             x = board.getWidth();
-        if(y >= board.getHeight() && Game.isDownPressed())
+        if(y >= board.getHeight())
             y = 0;
-        if(y <= -xSize && Game.isUpPressed())
+        if(y <= -xSize)
+            y = board.getHeight();
+    }
+
+    public void move(String direction, int xPos, int yPos){
+        if(direction.equals("up")){
+            x = xPos;
+            y = yPos + speed;
+        }
+        else if(direction.equals("down")){
+            x = xPos;
+            y = yPos - speed;
+        }
+        else if(direction.equals("left")){
+            x = xPos - speed;
+            y = yPos;
+        }
+        else{
+            x = xPos + speed;
+            y = yPos;
+        }
+
+        if(x >= board.getWidth())
+            x = 0;
+        if(x <= -xSize)
+            x = board.getWidth();
+        if(y >= board.getHeight())
+            y = 0;
+        if(y <= -xSize)
             y = board.getHeight();
     }
 

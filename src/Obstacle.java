@@ -1,4 +1,7 @@
-import java.awt.*;
+
+//For later...
+
+/*import java.awt.*;
 import java.util.Random;
 
 public class Obstacle {
@@ -20,3 +23,4 @@ public class Obstacle {
     }
 
 }
+*/

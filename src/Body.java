@@ -31,21 +31,46 @@ public class Body {
 
     public void move(){
 
-        while(board.getScore() < 3000){
-            for(int i = 0; i < body.size(); i++) {
-                if (body.size() == 1){
-                    if (Game.currentDirection().equals("up")) {
-                        body.get(i).move("up");
-                    } else if (Game.isDownPressed()) {
-                        body.get(i).move("down");
-                    } else if (Game.isRightPressed()) {
-                        body.get(i).move("right");
-                    } else if (Game.isLeftPressed()) {
-                        body.get(i).move("left");
-                    }
+        for(int i = 0; i < body.size(); i++) {
+            if (body.size() == 1) {
+                if (Game.currentDirection().equals("up")) {
+                    body.get(i).move("up");
+                } else if (Game.currentDirection().equals("down")) {
+                    body.get(i).move("down");
+                } else if (Game.currentDirection().equals("right")) {
+                    body.get(i).move("right");
+                } else if (Game.currentDirection().equals("left")) {
+                    body.get(i).move("left");
                 }
-                else {
-                    //Do things
+            } else {
+                if (!Game.lastDirection().equals("up")) {
+                    if (Game.currentDirection().equals("down"))
+                        body.get(i).move("down");
+                    if(Game.currentDirection().equals("left"))
+                        body.get(i).move("left");
+                    if(Game.currentDirection().equals("right"))
+                        body.get(i).move("right");
+                } else if (!Game.lastDirection().equals("down")) {
+                    if (Game.currentDirection().equals("up"))
+                        body.get(i).move("up");
+                    if(Game.currentDirection().equals("left"))
+                        body.get(i).move("left");
+                    if(Game.currentDirection().equals("right"))
+                        body.get(i).move("right");
+                } else if (!Game.lastDirection().equals("left")){
+                    if (Game.currentDirection().equals("up"))
+                        body.get(i).move("up");
+                    if(Game.currentDirection().equals("left"))
+                        body.get(i).move("left");
+                    if(Game.currentDirection().equals("down"))
+                        body.get(i).move("down");
+                } else if (!Game.lastDirection().equals("right")) {
+                    if (Game.currentDirection().equals("up"))
+                        body.get(i).move("up");
+                    if(Game.currentDirection().equals("right"))
+                        body.get(i).move("right");
+                    if(Game.currentDirection().equals("down"))
+                        body.get(i).move("down");
                 }
             }
         }
